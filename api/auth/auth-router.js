@@ -92,7 +92,7 @@ router.post('/login', validateBody, validateUsername, (req, res, next) => {
             token: token,
         });
         } else {
-          next({ status: 401, message: "Invalid credentials" });
+          next({ status: 401, message: "invalid credentials" });
         }
       } catch (err) {
         next(err);
