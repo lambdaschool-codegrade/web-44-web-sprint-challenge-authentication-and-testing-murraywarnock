@@ -3,7 +3,7 @@ const db = require('../../data/dbConfig');
 function findById(id) {
 return db("users")
 .where("id", id)
-.select("username", "password").first();
+.select("id", "username", "password").first();
 }
 
 function findBy(filter) {

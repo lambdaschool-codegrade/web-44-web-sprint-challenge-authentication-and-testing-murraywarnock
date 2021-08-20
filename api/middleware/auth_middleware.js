@@ -1,0 +1,21 @@
+const { findBy } = require('../auth/auth-model');
+
+async function validateCredentials(req, res, next) {
+    try {
+      const { username } = req.body;
+      const user = await findBy({ username: username }); 
+      if (user.length) {
+        req.user = user[0];
+        next();
+      } else {
+        next({ 
+          status: 401, 
+          message: "invalid credentials" 
+        });
+      }
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  module.exports = { validateCredentials };
