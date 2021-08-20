@@ -18,7 +18,7 @@ function buildToken(user) {
 }
 
 
-router.post('/register', checkUsernameExists, validateUsername, async (req, res, next) => {
+router.post('/register', checkUsernameExists, async (req, res, next) => {
   // res.end('implement register, please!');
   /*
     IMPLEMENT
