@@ -1,11 +1,8 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const {
-  add,
-  findById,
-} = require('./auth-model');
+const { add } = require('./auth-model');
 const { 
-  // checkUsernameExists, 
+  checkUsernameExists, 
   validateBody 
 } = require('../middleware/users_middleware');
 const jwt = require('jsonwebtoken');
@@ -23,7 +20,7 @@ function buildToken(user) {
 }
 
 
-router.post('/register', validateBody, async (req, res, next) => {
+router.post('/register', checkUsernameExists, validateBody, async (req, res, next) => {
   // res.end('implement register, please!');
   /*
     IMPLEMENT

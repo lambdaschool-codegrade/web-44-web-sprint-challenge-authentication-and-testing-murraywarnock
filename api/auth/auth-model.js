@@ -6,6 +6,12 @@ return db("users")
 .select("username", "password").first();
 }
 
+function findBy(filter) {
+    return db("users")
+    .where(filter)
+    .select("*");
+  }
+
 async function add({ username, password }) { 
     const [id] = await db('users')
     .insert({
@@ -17,5 +23,6 @@ async function add({ username, password }) {
 
 module.exports = {
     add,
+    findBy,
     findById,
 };
