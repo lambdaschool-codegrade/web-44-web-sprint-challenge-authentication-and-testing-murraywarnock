@@ -1,6 +1,6 @@
 const { findBy } = require('../auth/auth-model');
 
-async function validateCredentials(req, res, next) {
+async function validateUsername(req, res, next) {
     try {
       const { username } = req.body;
       const user = await findBy({ username: username }); 
@@ -18,4 +18,4 @@ async function validateCredentials(req, res, next) {
     }
   }
 
-  module.exports = { validateCredentials };
+  module.exports = { validateUsername };
